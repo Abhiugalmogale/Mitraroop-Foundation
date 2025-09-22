@@ -101,7 +101,7 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src="../assets/photo-3.jpeg"
+                src="../assets/photo-2.jpeg"
                 alt="Community gathering"
                 className="rounded-lg shadow-xl"
               />
