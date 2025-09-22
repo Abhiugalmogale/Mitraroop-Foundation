@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Users, GraduationCap, HandHeart, ArrowRight, Star } from 'lucide-react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Home = () => {
   const stats = [
@@ -29,6 +34,13 @@ const Home = () => {
       content: 'During my medical emergency, Mitraroop Foundation was there for my family. Forever grateful.',
       rating: 5,
     },
+  ];
+
+  const photos = [
+    "/assets/photo-1.jpeg",
+    "/assets/photo-2.jpeg",
+    "/assets/photo-3.jpeg",
+    "/assets/photo-4.jpeg",
   ];
 
   return (
@@ -118,7 +130,7 @@ const Home = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg"
+                src="/assets/photo-4.jpeg"
                 alt="Community helping"
                 className="rounded-lg shadow-xl"
               />
@@ -192,6 +204,37 @@ const Home = () => {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Gallery Section (Swiper Slider) */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Our Gallery</h2>
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="rounded-xl shadow-lg"
+          >
+            {photos.map((src, i) => (
+              <SwiperSlide key={i}>
+                <img
+                  src={src}
+                  alt={`Slide ${i}`}
+                  className="w-full h-[400px] object-cover rounded-xl"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </section>
 
